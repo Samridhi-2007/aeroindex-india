@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "source": "placeholder",
+    "description": "Demo airfare observations for local development",
+    "version": "0.1.0"
+  },
+  "records": [
+    {
+      "id": "demo-001",
+      "origin": "DEL",
+      "destination": "BOM",
+      "airline": "DemoAir",
+      "date": "2026-09-01",
+      "currency": "INR",
+      "price": 6450
+    },
+    {
+      "id": "demo-002",
+      "origin": "BLR",
+      "destination": "DEL",
+      "airline": "DemoAir",
+      "date": "2026-09-02",
+      "currency": "INR",
+      "price": 7125
+    }
+  ]
+}
