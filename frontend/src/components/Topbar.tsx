@@ -1,23 +1,79 @@
 import { Search, Bell, ChevronDown } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+import "./Topbar.css";
 
 export default function Topbar() {
+  const location = useLocation();
+
+  const pageInfo: Record<string, { section: string; title: string }> = {
+    "/dashboard": {
+      section: "Analytics",
+      title: "Dashboard",
+    },
+    "/analytics": {
+      section: "Analysis",
+      title: "Analytics",
+    },
+    "/trends": {
+      section: "Analysis",
+      title: "Trends",
+    },
+    "/routes": {
+      section: "Data",
+      title: "Routes",
+    },
+    "/fare-data": {
+      section: "Data",
+      title: "Fare Data",
+    },
+    "/airlines": {
+      section: "Data",
+      title: "Airlines & Sources",
+    },
+    "/scraping-status": {
+      section: "Monitoring",
+      title: "Scraping Status",
+    },
+    "/cpi-comparison": {
+      section: "Index",
+      title: "CPI Comparison",
+    },
+    "/airfare-index": {
+      section: "Index",
+      title: "Airfare Price Index",
+    },
+    "/profile": {
+      section: "Account",
+      title: "Profile",
+    },
+  };
+
+  const currentPage = pageInfo[location.pathname] || {
+    section: "Analytics",
+    title: "Dashboard",
+  };
+
   return (
     <header className="topbar">
       <div className="topbar-left">
         <div className="topbar-breadcrumb">
-          <span>Analytics</span>
+          <span>{currentPage.section}</span>
+
           <span className="breadcrumb-separator">/</span>
-          <strong>Dashboard</strong>
+
+          <strong>{currentPage.title}</strong>
         </div>
       </div>
 
       <div className="topbar-right">
+        {/* Search */}
         <div className="topbar-search">
           <Search size={15} />
 
           <input type="text" placeholder="Search routes, sources..." />
         </div>
 
+        {/* Notifications */}
         <button
           type="button"
           className="notification-button"
@@ -27,7 +83,14 @@ export default function Topbar() {
           <span className="notification-dot" />
         </button>
 
-        <div className="topbar-user">
+        {/* Profile */}
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            `topbar-user ${isActive ? "profile-active" : ""}`
+          }
+          aria-label="Open profile"
+        >
           <div className="user-avatar">AS</div>
 
           <div className="user-info">
@@ -36,7 +99,7 @@ export default function Topbar() {
           </div>
 
           <ChevronDown size={14} />
-        </div>
+        </NavLink>
       </div>
     </header>
   );

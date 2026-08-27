@@ -1,0 +1,976 @@
+/* =====================================================
+   ROUTES PAGE
+===================================================== */
+
+.routes-page {
+  width: 100%;
+  min-height: 100%;
+  background: #f5f8fb;
+  color: #18324c;
+}
+
+.routes-page,
+.routes-page * {
+  box-sizing: border-box;
+}
+
+.routes-container {
+  width: min(100% - 48px, 1500px);
+  margin: 0 auto;
+  padding: 32px 0 28px;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.routes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.routes-breadcrumb {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  color: #8a9bad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.routes-breadcrumb span {
+  color: #b2bec9;
+}
+
+.routes-header h1 {
+  margin: 0;
+  color: #18324c;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+}
+
+.routes-header p {
+  max-width: 700px;
+  margin: 8px 0 0;
+
+  color: #71869a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.routes-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  border: 1px solid #dce6ee;
+  border-radius: 7px;
+
+  background: #fff;
+
+  color: #71869a;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.routes-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #42a776;
+}
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+.routes-filter-card {
+  margin-bottom: 20px;
+
+  border: 1px solid #dce6ee;
+  border-radius: 9px;
+
+  background: #fff;
+  box-shadow: 0 2px 7px rgba(24, 50, 76, 0.035);
+}
+
+.routes-filter-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 48px;
+  padding: 0 17px;
+
+  border-bottom: 1px solid #e7edf2;
+}
+
+.routes-filter-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #294861;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.routes-clear {
+  border: 0;
+  background: transparent;
+
+  color: #70869a;
+
+  font-family: inherit;
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.routes-clear:hover {
+  color: #2e6d9f;
+}
+
+.routes-filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+
+  padding: 16px 17px 18px;
+}
+
+.route-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.route-filter > span {
+  color: #788d9f;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.route-filter select {
+  width: 100%;
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #d8e3eb;
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #fbfcfd;
+  color: #2d4b62;
+
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.route-filter select:focus {
+  border-color: #7ea8c7;
+}
+
+/* =====================================================
+   TABLE CARD
+===================================================== */
+
+.routes-table-card {
+  width: 100%;
+
+  border: 1px solid #dce6ee;
+  border-radius: 9px;
+
+  background: #fff;
+
+  box-shadow: 0 2px 7px rgba(24, 50, 76, 0.035);
+}
+
+.routes-table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 68px;
+  padding: 14px 19px;
+
+  border-bottom: 1px solid #e6edf2;
+}
+
+.routes-table-top h2 {
+  margin: 0;
+
+  color: #203e57;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.routes-table-top p {
+  margin: 4px 0 0;
+
+  color: #8798a7;
+  font-size: 11px;
+}
+
+.routes-table-note {
+  color: #8798a7;
+  font-size: 10px;
+}
+
+/* =====================================================
+   TABLE WRAPPER
+===================================================== */
+
+.routes-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* =====================================================
+   IMPORTANT TABLE RESET
+   Prevents global CSS clashes
+===================================================== */
+
+.routes-page .routes-table {
+  display: table !important;
+
+  width: 100% !important;
+  min-width: 1050px;
+
+  margin: 0;
+  padding: 0;
+
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+
+  table-layout: fixed !important;
+}
+
+.routes-page .routes-table thead {
+  display: table-header-group !important;
+}
+
+.routes-page .routes-table tbody {
+  display: table-row-group !important;
+}
+
+.routes-page .routes-table tr {
+  display: table-row !important;
+}
+
+.routes-page .routes-table th,
+.routes-page .routes-table td {
+  display: table-cell !important;
+
+  margin: 0;
+  padding: 13px 14px;
+
+  border: 0;
+  border-bottom: 1px solid #edf1f4;
+
+  text-align: left;
+  vertical-align: middle;
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   COLUMN WIDTHS
+===================================================== */
+
+.routes-page .routes-table th:nth-child(1),
+.routes-page .routes-table td:nth-child(1) {
+  width: 27%;
+}
+
+.routes-page .routes-table th:nth-child(2),
+.routes-page .routes-table td:nth-child(2) {
+  width: 10%;
+}
+
+.routes-page .routes-table th:nth-child(3),
+.routes-page .routes-table td:nth-child(3) {
+  width: 14%;
+}
+
+.routes-page .routes-table th:nth-child(4),
+.routes-page .routes-table td:nth-child(4) {
+  width: 14%;
+}
+
+.routes-page .routes-table th:nth-child(5),
+.routes-page .routes-table td:nth-child(5) {
+  width: 13%;
+}
+
+.routes-page .routes-table th:nth-child(6),
+.routes-page .routes-table td:nth-child(6) {
+  width: 11%;
+}
+
+.routes-page .routes-table th:nth-child(7),
+.routes-page .routes-table td:nth-child(7) {
+  width: 10%;
+}
+
+.routes-page .routes-table th:nth-child(8),
+.routes-page .routes-table td:nth-child(8) {
+  width: 35px;
+}
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.routes-page .routes-table thead {
+  background: #f8fafc;
+}
+
+.routes-page .routes-table th {
+  color: #71869c;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  height: 39px;
+}
+
+.routes-page .routes-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* =====================================================
+   ROW
+===================================================== */
+
+.routes-page .route-row {
+  height: 68px;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.routes-page .route-row:hover {
+  background: #f8fbfd;
+}
+
+.routes-page .route-row:hover td:first-child {
+  box-shadow: inset 3px 0 0 #4381b0;
+}
+
+/* =====================================================
+   ROUTE CELL
+===================================================== */
+
+.route-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.route-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 32px;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #dce7ef;
+  border-radius: 7px;
+
+  background: #f6f9fb;
+  color: #64869f;
+}
+
+.route-cell > div:last-child {
+  min-width: 0;
+}
+
+.route-cell strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #24445d;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.route-cell strong span {
+  color: #8fa1af;
+}
+
+.route-cell small {
+  display: block;
+
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  color: #8a9baa;
+
+  font-size: 9px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.route-number {
+  color: #48657c;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fare-value {
+  color: #1e405c;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.apix-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.apix-cell strong {
+  color: #294c66;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.apix-cell span {
+  color: #9aa9b6;
+  font-size: 9px;
+}
+
+/* =====================================================
+   WEEKLY CHANGE
+===================================================== */
+
+.weekly-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.weekly-change.positive {
+  color: #2c8c65;
+}
+
+.weekly-change.negative {
+  color: #c45e5e;
+}
+
+/* =====================================================
+   CONFIDENCE
+===================================================== */
+
+.confidence-cell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.confidence-bar {
+  width: 42px;
+  height: 5px;
+
+  overflow: hidden;
+
+  border-radius: 99px;
+
+  background: #e5edf2;
+}
+
+.confidence-bar span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #6794b6;
+}
+
+.confidence-cell strong {
+  color: #45647b;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.route-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.route-status i {
+  display: block;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+.route-status.active {
+  color: #2c8c65;
+}
+
+.route-status.active i {
+  background: #45a778;
+}
+
+.route-status.watch {
+  color: #ad7b35;
+}
+
+.route-status.watch i {
+  background: #d39a43;
+}
+
+.route-status.low {
+  color: #9a6c6c;
+}
+
+.route-status.low i {
+  background: #bd7777;
+}
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.route-arrow {
+  color: #9badbb;
+
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease;
+}
+
+.route-row:hover .route-arrow {
+  color: #4d82a8;
+  transform: translateX(2px);
+}
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.routes-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 250px;
+  gap: 7px;
+
+  color: #8294a4;
+}
+
+.routes-empty strong {
+  color: #526d83;
+  font-size: 13px;
+}
+
+.routes-empty span {
+  font-size: 11px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.routes-footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 16px 2px 0;
+
+  color: #8295a6;
+  font-size: 10px;
+}
+
+/* =====================================================
+   DRAWER
+===================================================== */
+
+.route-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: flex-end;
+
+  background: rgba(15, 34, 51, 0.28);
+}
+
+.route-drawer {
+  width: min(450px, 94vw);
+  height: 100vh;
+
+  overflow-y: auto;
+
+  border-left: 1px solid #d7e2eb;
+
+  background: #fff;
+
+  box-shadow: -12px 0 35px rgba(25, 48, 68, 0.12);
+
+  animation: routeDrawerIn 0.2s ease;
+}
+
+@keyframes routeDrawerIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* DRAWER HEADER */
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 21px 22px;
+
+  border-bottom: 1px solid #e5edf2;
+}
+
+.drawer-eyebrow {
+  margin-bottom: 6px;
+
+  color: #7890a4;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.drawer-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0;
+
+  color: #1d3c56;
+
+  font-size: 24px;
+}
+
+.drawer-header h2 span {
+  color: #8ea1b0;
+}
+
+.drawer-header p {
+  margin: 5px 0 0;
+
+  color: #8294a4;
+  font-size: 11px;
+}
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #dce6ed;
+  border-radius: 6px;
+
+  background: #fff;
+  color: #637b8e;
+
+  cursor: pointer;
+}
+
+/* CURRENT FARE */
+
+.drawer-current-fare {
+  padding: 20px 22px;
+
+  border-bottom: 1px solid #e7eef3;
+
+  background: #f8fafc;
+}
+
+.drawer-current-fare > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #71879a;
+  font-size: 10px;
+}
+
+.drawer-current-fare > strong {
+  display: block;
+
+  color: #183b57;
+  font-size: 29px;
+}
+
+.drawer-change {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.drawer-change span {
+  color: #8a9aa8;
+  font-weight: 500;
+}
+
+/* DRAWER SECTION */
+
+.drawer-section {
+  padding: 19px 22px;
+
+  border-bottom: 1px solid #e7eef3;
+}
+
+.drawer-section-title {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.drawer-section-title > span {
+  color: #526b80;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* METRICS */
+
+.drawer-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  overflow: hidden;
+
+  border: 1px solid #e1e9ef;
+  border-radius: 7px;
+}
+
+.drawer-metric {
+  min-height: 62px;
+  padding: 10px 12px;
+
+  border-right: 1px solid #e1e9ef;
+  border-bottom: 1px solid #e1e9ef;
+}
+
+.drawer-metric:nth-child(2n) {
+  border-right: 0;
+}
+
+.drawer-metric:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.drawer-metric > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #8798a7;
+  font-size: 9px;
+}
+
+.drawer-metric strong {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: #294963;
+  font-size: 13px;
+}
+
+/* CONFIG */
+
+.drawer-config {
+  border-top: 1px solid #edf1f4;
+}
+
+.drawer-config > div {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #edf1f4;
+}
+
+.drawer-config span {
+  color: #8799a8;
+  font-size: 10px;
+}
+
+.drawer-config strong {
+  color: #3c5970;
+  font-size: 11px;
+}
+
+/* FORECAST */
+
+.forecast-list {
+  overflow: hidden;
+
+  border: 1px solid #e1e9ef;
+  border-radius: 7px;
+}
+
+.forecast-row {
+  display: grid;
+  grid-template-columns: 55px 1fr 60px;
+  align-items: center;
+
+  min-height: 42px;
+  padding: 0 11px;
+
+  border-bottom: 1px solid #e9eef2;
+}
+
+.forecast-row:last-child {
+  border-bottom: 0;
+}
+
+.forecast-horizon {
+  color: #71869a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.forecast-fare {
+  color: #294b64;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.forecast-change {
+  text-align: right;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.forecast-change.positive {
+  color: #2c8c65;
+}
+
+.forecast-change.negative {
+  color: #c35e5e;
+}
+
+/* NOTE */
+
+.drawer-note {
+  display: flex;
+  gap: 8px;
+
+  margin: 16px 22px 22px;
+  padding: 11px;
+
+  border: 1px solid #dce7ef;
+  border-radius: 6px;
+
+  background: #f7fafc;
+
+  color: #71869a;
+
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+  .routes-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .routes-header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .routes-container {
+    width: calc(100% - 24px);
+    padding-top: 20px;
+  }
+
+  .routes-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .routes-table-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
