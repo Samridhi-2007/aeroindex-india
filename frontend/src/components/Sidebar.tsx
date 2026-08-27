@@ -109,6 +109,10 @@ const menuSections = [
 export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+      {/* =====================================================
+          BRAND
+      ===================================================== */}
+
       <div className="sidebar-brand">
         <div className="brand-icon">
           <Plane size={20} />
@@ -122,6 +126,10 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
         )}
       </div>
 
+      {/* =====================================================
+          SIDEBAR TOGGLE
+      ===================================================== */}
+
       <button
         type="button"
         className="sidebar-toggle"
@@ -130,6 +138,10 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
       >
         {collapsed ? <ChevronRight size={15} /> : <ChevronLeft size={15} />}
       </button>
+
+      {/* =====================================================
+          NAVIGATION
+      ===================================================== */}
 
       <nav className="sidebar-menu">
         {menuSections.map((section) => (
@@ -156,6 +168,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                     <span className="sidebar-label">{item.label}</span>
                   )}
 
+                  {/* Dashboard status indicator */}
                   {item.label === "Dashboard" && !collapsed && (
                     <span className="status-dot" />
                   )}
@@ -165,6 +178,10 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
           </div>
         ))}
       </nav>
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
 
       <div className="sidebar-footer">
         {!collapsed ? (
