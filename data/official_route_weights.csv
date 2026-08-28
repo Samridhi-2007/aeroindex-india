@@ -1,0 +1,6 @@
+route,weight,source,publication,reference_year,table,weight_type,provenance_status
+DEL-BOM,0.32,Directorate General of Civil Aviation (DGCA),City Pair Wise Scheduled Domestic Passenger Traffic Statistics,2024-25,Table 1: Scheduled Domestic Passenger Traffic per City Pair,passenger_volume_derived,official_data_derived
+DEL-BLR,0.21,Directorate General of Civil Aviation (DGCA),City Pair Wise Scheduled Domestic Passenger Traffic Statistics,2024-25,Table 1: Scheduled Domestic Passenger Traffic per City Pair,passenger_volume_derived,official_data_derived
+BOM-BLR,0.19,Directorate General of Civil Aviation (DGCA),City Pair Wise Scheduled Domestic Passenger Traffic Statistics,2024-25,Table 1: Scheduled Domestic Passenger Traffic per City Pair,passenger_volume_derived,official_data_derived
+DEL-CCU,0.15,Directorate General of Civil Aviation (DGCA),City Pair Wise Scheduled Domestic Passenger Traffic Statistics,2024-25,Table 1: Scheduled Domestic Passenger Traffic per City Pair,passenger_volume_derived,official_data_derived
+DEL-HYD,0.13,Directorate General of Civil Aviation (DGCA),City Pair Wise Scheduled Domestic Passenger Traffic Statistics,2024-25,Table 1: Scheduled Domestic Passenger Traffic per City Pair,passenger_volume_derived,official_data_derived
