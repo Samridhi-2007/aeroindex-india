@@ -28,12 +28,16 @@ Insights are structured dictionaries generated from calculated index movement an
 
 `data/demo_weights.csv` contains prototype/demo assumptions, not official SIH weights. The file is loaded at runtime, validated, and can be replaced by team-approved weights. The demo contains one source per route family and base/current periods.
 
+## Flowchart
+
+![AeroIndex flowchart](images/dashboard.png)
+
 ## Run
 
 From the project root:
 
 ```powershell
-python run_demo.py
+python run_live.py
 ```
 
 Run tests with:
