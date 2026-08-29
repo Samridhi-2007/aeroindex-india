@@ -1,2 +1,0 @@
-CREATE DATABASE IF NOT EXISTS airfare_source CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE DATABASE IF NOT EXISTS airfare_results CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
