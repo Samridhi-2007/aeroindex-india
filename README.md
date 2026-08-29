@@ -28,12 +28,68 @@ Insights are structured dictionaries generated from calculated index movement an
 
 `data/demo_weights.csv` contains prototype/demo assumptions, not official SIH weights. The file is loaded at runtime, validated, and can be replaced by team-approved weights. The demo contains one source per route family and base/current periods.
 
+## Flowchart
+
+![AeroIndex flowchart](images/dashboard.png)
+
+## Architecture
+
+┌───────────────────────────────────────┐
+│          AIRLINE / OTA SOURCES       │
+│   Airlines • OTAs • APIs • Feeds     │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│         COLLECTION ADAPTERS           │
+│ Scrapy • Playwright • T+1 ... T+45   │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│    VALIDATION & STANDARDIZATION       │
+│ Cleaning • Duplicates • Outliers      │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│          POSTGRESQL DATABASE          │
+│ Routes • Fares • Weights • Sources    │
+│ Runs • Releases • Historical Data     │
+└───────────────┬───────────┬───────────┘
+                │           │
+                ↓           ↓
+┌─────────────────────┐  ┌─────────────────────┐
+│ APIx & INTELLIGENCE │  │   FASTAPI BACKEND   │
+│                     │  │                     │
+│ Index Calculation   │  │ REST APIs           │
+│ Route Analytics     │  │ Data Services       │
+│ Confidence          │  │ Analytics APIs      │
+│ CPI Readiness       │  │ Evidence Pack API   │
+└──────────┬──────────┘  └──────────┬──────────┘
+           │                         │
+           └────────────┬────────────┘
+                        ↓
+          ┌──────────────────────────┐
+          │   REACT FRONTEND         │
+          │                          │
+          │ National Dashboard       │
+          │ Route Analytics          │
+          │ Booking Windows          │
+          │ Confidence & CPI Status  │
+          └────────────┬─────────────┘
+                       ↓
+        ┌──────────────────────────────┐
+        │      POLICY OUTPUTS          │
+        │                              │
+        │ MoSPI Dashboard              │
+        │ CPI Evidence Pack            │
+        │ Reports / Machine APIs       │
+        └──────────────────────────────┘
+
 ## Run
 
 From the project root:
 
 ```powershell
-python run_demo.py
+python run_live.py
 ```
 
 Run tests with:
