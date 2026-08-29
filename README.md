@@ -32,6 +32,58 @@ Insights are structured dictionaries generated from calculated index movement an
 
 ![AeroIndex flowchart](images/dashboard.png)
 
+## Architecture
+
+┌───────────────────────────────────────┐
+│          AIRLINE / OTA SOURCES       │
+│   Airlines • OTAs • APIs • Feeds     │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│         COLLECTION ADAPTERS           │
+│ Scrapy • Playwright • T+1 ... T+45   │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│    VALIDATION & STANDARDIZATION       │
+│ Cleaning • Duplicates • Outliers      │
+└───────────────────┬───────────────────┘
+                    ↓
+┌───────────────────────────────────────┐
+│          POSTGRESQL DATABASE          │
+│ Routes • Fares • Weights • Sources    │
+│ Runs • Releases • Historical Data     │
+└───────────────┬───────────┬───────────┘
+                │           │
+                ↓           ↓
+┌─────────────────────┐  ┌─────────────────────┐
+│ APIx & INTELLIGENCE │  │   FASTAPI BACKEND   │
+│                     │  │                     │
+│ Index Calculation   │  │ REST APIs           │
+│ Route Analytics     │  │ Data Services       │
+│ Confidence          │  │ Analytics APIs      │
+│ CPI Readiness       │  │ Evidence Pack API   │
+└──────────┬──────────┘  └──────────┬──────────┘
+           │                         │
+           └────────────┬────────────┘
+                        ↓
+          ┌──────────────────────────┐
+          │   REACT FRONTEND         │
+          │                          │
+          │ National Dashboard       │
+          │ Route Analytics          │
+          │ Booking Windows          │
+          │ Confidence & CPI Status  │
+          └────────────┬─────────────┘
+                       ↓
+        ┌──────────────────────────────┐
+        │      POLICY OUTPUTS          │
+        │                              │
+        │ MoSPI Dashboard              │
+        │ CPI Evidence Pack            │
+        │ Reports / Machine APIs       │
+        └──────────────────────────────┘
+
 ## Run
 
 From the project root:
