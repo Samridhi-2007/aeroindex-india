@@ -1,5 +1,4 @@
 import argparse
-import os
 from pathlib import Path
 
 from intelligence.airline_collectors import AirIndiaCollector, EaseMyTripCollector, IndigoCollector, SkyscannerCollector
@@ -7,7 +6,6 @@ from intelligence.data import load_cpi_airfare_weight, load_weights
 from intelligence.models import Weights
 from intelligence.pipeline import collect_and_calculate
 from intelligence.storage import IntelligenceRepository
-from intelligence.mysql_storage import create_mysql_repositories
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,10 +21,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cpi-sector", default="Rural", choices=("Rural", "Urban", "Combined"))
     parser.add_argument("--source-db", type=Path, default=Path("data/source.db"))
     parser.add_argument("--result-db", type=Path, default=Path("data/results.db"))
-    parser.add_argument("--backend", choices=("sqlite", "mysql"), default="sqlite")
-    parser.add_argument("--mysql-host", default="127.0.0.1")
-    parser.add_argument("--mysql-port", type=int, default=3306)
-    parser.add_argument("--mysql-user", default="root")
     parser.add_argument("--airindia-fare-selector")
     parser.add_argument("--indigo-fare-selector")
     parser.add_argument("--skyscanner-fare-selector", default='[data-backpack-ds-component="Text"]')
@@ -38,11 +32,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     windows = [int(value.strip()) for value in args.windows.split(",")]
-    if args.backend == "mysql":
-        source, results = create_mysql_repositories(args.mysql_host, args.mysql_port, args.mysql_user, os.getenv("MYSQL_PASSWORD"))
-    else:
-        source = IntelligenceRepository(args.source_db)
-        results = IntelligenceRepository(args.result_db)
+    source = IntelligenceRepository(args.source_db)
+    results = IntelligenceRepository(args.result_db)
     if args.weights and args.weights.exists():
         route_weights = load_weights(args.weights)
     else:

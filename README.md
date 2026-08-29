@@ -90,16 +90,4 @@ Run once with `--period base` and once with `--period current` to populate both 
 
 The command above uses `data/demo_weights.csv` and therefore produces `DEMONSTRATION-WEIGHTED` output. It is suitable only for testing. Production execution must provide an authoritative route-weight CSV with route metadata marked `official`; otherwise the calculation is blocked with `ROUTE_WEIGHTS_MISSING`.
 
-## MySQL
-
-Install MySQL Server, start it, and create the two databases with `scripts/init_mysql.sql`. The project then uses `airfare_source` for scrape/raw/clean data and `airfare_results` for reports. Set the password only in the process environment:
-
-```powershell
-$env:MYSQL_PASSWORD = '<your-root-password>'
-Get-Content scripts/init_mysql.sql | mysql -u root -p
-python run_live.py --backend mysql --source skyscanner --travel-date 2026-09-15 --windows 15 --weights data/demo_weights.csv --cpi-airfare-file data/cpi_weights.csv --cpi-sector Rural
-```
-
-The MySQL backend is implemented in `intelligence/mysql_storage.py`. Do not commit passwords or put them in command-line arguments. The current machine did not have a MySQL client/server available, so database creation must be run after MySQL is installed and running.
-
 Example observed Skyscanner source values from a permitted `DEL -> BOM` search included `₹4,999`, `₹5,217`, and `₹6,580`. These are stored as raw fare text and normalized as `4999`, `5217`, and `6580` INR. For a matched base/current pair of ₹5,000 and ₹5,500, the elementary Jevons index is `110.0`; the final index is then the authoritative route-weighted aggregation of route elementary indices.
